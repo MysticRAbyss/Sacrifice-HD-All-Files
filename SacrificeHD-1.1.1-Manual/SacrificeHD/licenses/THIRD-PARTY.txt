@@ -1,0 +1,7 @@
+Sacrifice HD bundles:
+- realesrgan-ncnn-vulkan (MIT) and Real-ESRGAN realesr-animevideov3 models (BSD-3-Clause), Xintao Wang et al.
+  https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan  https://github.com/xinntao/Real-ESRGAN
+- vcomp140.dll: Microsoft Visual C++ OpenMP runtime, redistributed as shipped with realesrgan-ncnn-vulkan.
+- dgVoodoo2 by Dege (see dgVoodoo2-notice.txt)
+- dinputto8 by Elisha Riedlinger (zlib license, see dinputto8-zlib.txt) https://github.com/elishacloud/dinputto8
+No files from Sacrifice itself are included; the launcher reads the player's own installed copy.
