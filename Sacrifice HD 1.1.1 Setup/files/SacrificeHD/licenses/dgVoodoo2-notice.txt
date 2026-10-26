@@ -1,0 +1,3 @@
+dgVoodoo2 2.87.5 (DDraw.dll, D3DImm.dll) by Dege - http://dege.fw.hu/dgVoodoo2/
+dgVoodoo2 is freeware. Its readme permits shipping individual dgVoodoo files with a game or mod;
+the full package and documentation are available from the link above.
