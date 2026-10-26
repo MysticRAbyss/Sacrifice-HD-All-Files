@@ -1,0 +1,62 @@
+{
+ "sheet": "hooks",
+ "doc": "Every point where the mod touches the game. One row = one step in the launcher's run sequence.",
+ "columns": [
+  "id",
+  "when",
+  "action",
+  "path",
+  "undo",
+  "verified"
+ ],
+ "rows": [
+  {
+   "id": "restore_leftovers",
+   "when": "start",
+   "action": "if a previous run left HD wads in place, move originals back",
+   "path": "{game}/SacrificeHD/backup",
+   "undo": "n/a",
+   "verified": "yes"
+  },
+  {
+   "id": "fingerprint",
+   "when": "start",
+   "action": "hash size+mtime of every source wad; compare with cache manifest",
+   "path": "{localappdata}/SacrificeHD/cache/manifest.json",
+   "undo": "n/a",
+   "verified": "yes: sheet edits rebuild only affected wads"
+  },
+  {
+   "id": "generate",
+   "when": "cache stale",
+   "action": "extract -> upscale -> grade -> repack each wad in asset_classes",
+   "path": "{localappdata}/SacrificeHD/cache",
+   "undo": "delete cache folder",
+   "verified": "yes: 2m29s on this PC (Real-ESRGAN GPU)"
+  },
+  {
+   "id": "swap_in",
+   "when": "before game start",
+   "action": "move original wad to backup, copy HD wad into data",
+   "path": "{game}/data/*.wad",
+   "undo": "swap_out",
+   "verified": "yes"
+  },
+  {
+   "id": "launch",
+   "when": "after swap_in",
+   "action": "start Sacrifice.exe with compat layer, pass through args",
+   "path": "{game}/Sacrifice.exe",
+   "undo": "n/a",
+   "verified": "yes"
+  },
+  {
+   "id": "swap_out",
+   "when": "game exit",
+   "action": "move originals back over HD copies",
+   "path": "{game}/data/*.wad",
+   "undo": "n/a",
+   "verified": "yes: all 34 originals back after quit"
+  }
+ ]
+}

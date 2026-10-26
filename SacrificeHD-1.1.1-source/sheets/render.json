@@ -1,0 +1,186 @@
+{
+ "sheet": "render",
+ "doc": "Renderer settings (dgVoodoo2 DirectX wrapper + game options). One row = one setting written by the launcher.",
+ "columns": [
+  "id",
+  "target",
+  "section",
+  "key",
+  "value",
+  "purpose",
+  "verified"
+ ],
+ "rows": [
+  {
+   "id": "fullscreen",
+   "target": "dgVoodoo.conf",
+   "section": "General",
+   "key": "FullScreenMode",
+   "value": "true",
+   "purpose": "Modern resolutions",
+   "verified": "no: tested windowed only"
+  },
+  {
+   "id": "scaling",
+   "target": "dgVoodoo.conf",
+   "section": "General",
+   "key": "ScalingMode",
+   "value": "stretched",
+   "purpose": "fill a widescreen monitor with the 4:3 game picture (player's choice: no bars, slight horizontal stretch)",
+   "verified": "pending"
+  },
+  {
+   "id": "colorprofile",
+   "target": "dgVoodoo.conf",
+   "section": "General",
+   "key": "InheritColorProfileInFullScreenMode",
+   "value": "true",
+   "purpose": "stability",
+   "verified": "yes"
+  },
+  {
+   "id": "appcontrolled",
+   "target": "dgVoodoo.conf",
+   "section": "DirectX",
+   "key": "AppControlledScreenMode",
+   "value": "false",
+   "purpose": "dgVoodoo owns the screen mode (game hangs at 'Loading' when it switches modes itself)",
+   "verified": "yes: needed, or the game hangs at Loading"
+  },
+  {
+   "id": "center",
+   "target": "dgVoodoo.conf",
+   "section": "General",
+   "key": "CenterAppWindow",
+   "value": "true",
+   "purpose": "windowed testing",
+   "verified": "yes"
+  },
+  {
+   "id": "extra_res",
+   "target": "dgVoodoo.conf",
+   "section": "DirectXExt",
+   "key": "ExtraEnumeratedResolutions",
+   "value": "{gamemode}",
+   "purpose": "enumerate the 4:3 mode at desktop height (e.g. 1440x1080); widescreen breaks the game's 4:3 culling (units/buildings vanish when panning)",
+   "verified": "yes: at 1440x1080 nothing disappears when panning (player test)"
+  },
+  {
+   "id": "vram",
+   "target": "dgVoodoo.conf",
+   "section": "DirectX",
+   "key": "VRAM",
+   "value": "1024",
+   "purpose": "room for HD textures. 2000 broke creature textures even with original art (Netherfiend black, Phoenix/Silverback wings): the 2001 engine mishandles that much video memory -> back to 1024",
+   "verified": "pending"
+  },
+  {
+   "id": "msaa",
+   "target": "dgVoodoo.conf",
+   "section": "DirectX",
+   "key": "Antialiasing",
+   "value": "8x",
+   "purpose": "Smoother edges",
+   "verified": "yes"
+  },
+  {
+   "id": "aniso",
+   "target": "dgVoodoo.conf",
+   "section": "DirectX",
+   "key": "Filtering",
+   "value": "16",
+   "purpose": "Smoother edges",
+   "verified": "yes"
+  },
+  {
+   "id": "watermark",
+   "target": "dgVoodoo.conf",
+   "section": "DirectX",
+   "key": "dgVoodooWatermark",
+   "value": "false",
+   "purpose": "clean image",
+   "verified": "yes"
+  },
+  {
+   "id": "compat",
+   "target": "process_env",
+   "section": "",
+   "key": "__COMPAT_LAYER",
+   "value": "RunAsInvoker Win2000",
+   "purpose": "start unelevated with Windows 2000 heap/compat shims (XP layers force elevation; plain layer crashes in ntdll heap)",
+   "verified": "yes: Win2000 layer + dinputto8 stops the startup crash"
+  },
+  {
+   "id": "graphic_detail",
+   "target": "game_option",
+   "section": "Options",
+   "key": "Graphic detail",
+   "value": "0",
+   "purpose": "Bigger draw distance: highest Graphic detail (0 = most detail; matches a maxed-out install)",
+   "verified": "set, effect not measured"
+  },
+  {
+   "id": "texture_detail",
+   "target": "game_option",
+   "section": "Options",
+   "key": "Texture detail",
+   "value": "0",
+   "purpose": "full-resolution textures (0 = no downscaling)",
+   "verified": "set, effect not measured"
+  },
+  {
+   "id": "char_texture_detail",
+   "target": "game_option",
+   "section": "Options",
+   "key": "Character texture detail",
+   "value": "9",
+   "purpose": "full-resolution character textures (9 = top of the slider)",
+   "verified": "yes"
+  },
+  {
+   "id": "target_fps",
+   "target": "game_option",
+   "section": "Options",
+   "key": "Target framerate",
+   "value": "10",
+   "purpose": "stop the engine's automatic detail reduction from hiding units, souls and far terrain while the camera moves",
+   "verified": "pending"
+  },
+  {
+   "id": "fps_limit",
+   "target": "dgVoodoo.conf",
+   "section": "GeneralExt",
+   "key": "FPSLimit",
+   "value": "60",
+   "purpose": "keep the game at 60 fps: above 60 the computer players stand still at the start of a match (known engine issue on modern PCs)",
+   "verified": "pending"
+  },
+  {
+   "id": "supersample",
+   "target": "dgVoodoo.conf",
+   "section": "DirectX",
+   "key": "Resolution",
+   "value": "2x",
+   "purpose": "render the 3D scene at twice the game resolution and scale down (supersampling): sharper creatures and finer edges without touching their textures",
+   "verified": "pending"
+  },
+  {
+   "id": "phong",
+   "target": "dgVoodoo.conf",
+   "section": "DirectX",
+   "key": "PhongShadingWhenPossible",
+   "value": "true",
+   "purpose": "per-pixel lighting: smoother shading on low-poly creatures and models",
+   "verified": "pending"
+  },
+  {
+   "id": "resample",
+   "target": "dgVoodoo.conf",
+   "section": "GeneralExt",
+   "key": "Resampling",
+   "value": "lanczos-3",
+   "purpose": "sharper scaling of the final picture to the screen",
+   "verified": "pending"
+  }
+ ]
+}

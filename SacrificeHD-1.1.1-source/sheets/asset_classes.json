@@ -1,0 +1,258 @@
+{
+ "sheet": "asset_classes",
+ "doc": "One row per kind of art the overhaul touches; each row generates one AssetClass in gen_sheets.go. Sources are 'wad' or 'wad:/folder/prefix'. Scale is the linear factor: scaleSmall for textures whose long side <= 128 px, scaleLarge above that. Output long side never exceeds maxDim.",
+ "columns": [
+  "id",
+  "category",
+  "chunkType",
+  "sources",
+  "excludes",
+  "format",
+  "scaleSmall",
+  "scaleLarge",
+  "maxDim",
+  "grade",
+  "alpha",
+  "palette",
+  "frameHeader",
+  "verified"
+ ],
+ "rows": [
+  {
+   "id": "characters",
+   "category": "Creatures & wizards",
+   "chunkType": "SXTX",
+   "sources": [
+    "saxs*.wad"
+   ],
+   "excludes": [
+    "saxs_r9.wad",
+    "saxs_r10.wad",
+    "saxs_r11.wad",
+    "saxs_r4.wad:/sxr4/flop/"
+   ],
+   "format": "tga24_same",
+   "scaleSmall": 2,
+   "scaleLarge": 2,
+   "maxDim": 1024,
+   "grade": "rich",
+   "alpha": "none",
+   "palette": "none",
+   "frameHeader": "scale",
+   "verified": "user playtest 2026-10-11: same-size sharpened skins (tga24_same) for all creatures except races 9-11 (saxs_r9/10/11 left whole) and the Netherfiend (sxr4/flop); every creature renders correctly (\"perfect\"). Enlarged skins break wings/limbs; processed races 9-11 break the Netherfiend."
+  },
+  {
+   "id": "souls",
+   "category": "Spell effects",
+   "chunkType": "TXTR",
+   "sources": [
+    "main.wad:/MAIN/bits/spir"
+   ],
+   "excludes": [],
+   "format": "pal8",
+   "scaleSmall": 2,
+   "scaleLarge": 2,
+   "maxDim": 1024,
+   "grade": "rich_fx_soul",
+   "alpha": "flag4_key0",
+   "palette": "joint_per_palt",
+   "frameHeader": "scale",
+   "verified": "yes: blue/red soul atlas at 2x with alpha plane (player playtest: steady single souls)"
+  },
+  {
+   "id": "spell_fx",
+   "category": "Spell effects",
+   "chunkType": "TXTR",
+   "sources": [
+    "charlie.wad",
+    "Daniel.wad",
+    "shawn.wad",
+    "chris.wad",
+    "main.wad:/MAIN/bits",
+    "main.wad:/MAIN/envi"
+   ],
+   "excludes": [
+    "main.wad:/MAIN/bits/sprt",
+    "main.wad:/MAIN/bits/spi2",
+    "main.wad:/MAIN/bits/spir"
+   ],
+   "format": "pal8",
+   "scaleSmall": 4,
+   "scaleLarge": 4,
+   "maxDim": 1024,
+   "grade": "rich_fx",
+   "alpha": "flag4_key0",
+   "palette": "joint_per_palt",
+   "frameHeader": "scale",
+   "verified": "player choice 2026-10-11: sharper + more vivid -> every spell texture 4x (up to 1024px) and the stronger rich_fx grade - awaiting playtest (backup launcher kept: SacrificeHD_backup_2026-10-11.exe)"
+  },
+  {
+   "id": "world_models",
+   "category": "Terrain & world",
+   "chunkType": "TXTR",
+   "sources": [
+    "models.wad",
+    "joby.wad",
+    "jamesmod.wad",
+    "pyromod.wad",
+    "stratmod.wad"
+   ],
+   "excludes": [],
+   "format": "pal8",
+   "scaleSmall": 4,
+   "scaleLarge": 2,
+   "maxDim": 1024,
+   "grade": "rich",
+   "alpha": "flag4_key0",
+   "palette": "joint_per_palt",
+   "frameHeader": "scale",
+   "verified": "yes: altars, manaliths, buildings render in demo games"
+  },
+  {
+   "id": "terrain_sky_detail",
+   "category": "Terrain & world",
+   "chunkType": "TXTR",
+   "sources": [
+    "char.wad",
+    "ethr.wad",
+    "james_a.wad",
+    "prsc.wad",
+    "pyro_a.wad",
+    "strato_a.wad"
+   ],
+   "excludes": [
+    "char.wad:/char/char/SKY_",
+    "char.wad:/char/char/SUN_",
+    "char.wad:/char/char/UNDR",
+    "char.wad:/char/char/EDGE",
+    "ethr.wad:/ethr/ethr/SKY_",
+    "ethr.wad:/ethr/ethr/SUN_",
+    "ethr.wad:/ethr/ethr/UNDR",
+    "ethr.wad:/ethr/ethr/EDGE",
+    "james_a.wad:/JA_A/JA_A/SKY_",
+    "james_a.wad:/JA_A/JA_A/SUN_",
+    "james_a.wad:/JA_A/JA_A/UNDR",
+    "james_a.wad:/JA_A/JA_A/EDGE",
+    "prsc.wad:/prsc/prsc/SKY_",
+    "prsc.wad:/prsc/prsc/SUN_",
+    "prsc.wad:/prsc/prsc/UNDR",
+    "prsc.wad:/prsc/prsc/EDGE",
+    "pyro_a.wad:/PY_A/PY_A/SKY_",
+    "pyro_a.wad:/PY_A/PY_A/SUN_",
+    "pyro_a.wad:/PY_A/PY_A/UNDR",
+    "pyro_a.wad:/PY_A/PY_A/EDGE",
+    "strato_a.wad:/ST_A/ST_A/SKY_",
+    "strato_a.wad:/ST_A/ST_A/SUN_",
+    "strato_a.wad:/ST_A/ST_A/UNDR",
+    "strato_a.wad:/ST_A/ST_A/EDGE"
+   ],
+   "format": "pal8",
+   "scaleSmall": 4,
+   "scaleLarge": 2,
+   "maxDim": 1024,
+   "grade": "rich",
+   "alpha": "flag4_key0",
+   "palette": "joint_per_palt",
+   "frameHeader": "scale",
+   "verified": "yes; cloud layers SKYT/SKYB re-enabled after the alpha-plane fix (SKYT's unscaled alpha plane was the likely flat band) - player playtest: no band, clouds sharper; sky gradient SKY_, sun, horizon UNDR/EDGE kept original"
+  },
+  {
+   "id": "terrain_tiles",
+   "category": "Terrain & world",
+   "chunkType": "PALT",
+   "sources": [
+    "char.wad",
+    "ethr.wad",
+    "james_a.wad",
+    "prsc.wad",
+    "pyro_a.wad",
+    "strato_a.wad"
+   ],
+   "excludes": [],
+   "format": "palette_land",
+   "scaleSmall": 1,
+   "scaleLarge": 1,
+   "maxDim": 0,
+   "grade": "rich_palette",
+   "alpha": "none",
+   "palette": "regrade_in_place",
+   "frameHeader": "scale",
+   "verified": "yes: regraded terrain palettes render"
+  },
+  {
+   "id": "hud_menus",
+   "category": "Menus & HUD",
+   "chunkType": "TXTR",
+   "sources": [
+    "main.wad:/MAIN/huds",
+    "main.wad:/MAIN/titl",
+    "main.wad:/MAIN/curs",
+    "main.wad:/MAIN/icon",
+    "local/gfx_english.wad"
+   ],
+   "excludes": [
+    "main.wad:/MAIN/font",
+    "main.wad:/MAIN/test",
+    "Scapex.wad",
+    "main.wad:/MAIN/huds/sarr",
+    "main.wad:/MAIN/curs",
+    "main.wad:/MAIN/icon",
+    "main.wad:/MAIN/huds/page"
+   ],
+   "format": "pal8",
+   "scaleSmall": 4,
+   "scaleLarge": 2,
+   "maxDim": 256,
+   "grade": "rich_ui",
+   "alpha": "flag4_key0",
+   "palette": "joint_per_palt",
+   "frameHeader": "scale",
+   "verified": "menus/logo yes; HUD frame art (fram, tabs) yes after the alpha-plane fix (player playtest: sharper, same size, soul counter steady); /MAIN/huds/page kept original (the game reads it at its original size for menu strips, sliders and scrollbars -> jumbled when upscaled); selection arrow sarr kept original"
+  },
+  {
+   "id": "menu_widgets",
+   "category": "Menus & HUD",
+   "chunkType": "TXTR",
+   "sources": [
+    "interfac.wad"
+   ],
+   "excludes": [
+    "interfac.wad:/ifac/form/FSbg",
+    "interfac.wad:/ifac/form/FEbg",
+    "interfac.wad:/ifac/form/FBbg",
+    "interfac.wad:/ifac/form/FLbo",
+    "interfac.wad:/ifac/form/FMbo"
+   ],
+   "format": "pal8",
+   "scaleSmall": 4,
+   "scaleLarge": 2,
+   "maxDim": 256,
+   "grade": "rich_ui",
+   "alpha": "flag4_key0",
+   "palette": "keep_original",
+   "frameHeader": "scale",
+   "verified": "palette order: the original palettes are sorted and the game relies on it -> upscaled art mapped into the original palettes (player: bars/sliders/scrollbars fixed). Colour key: these palettes key index 255 (pure black), not index 0 -> black boxes beside the main-menu buttons; key pixels now keep their original index. Tiny tiled strips (slider tracks, edges, borders <=16px) kept original: upscaling made the slider tracks show light speckles - awaiting playtest"
+  },
+  {
+   "id": "icons",
+   "category": "Menus & HUD",
+   "chunkType": "ICON",
+   "sources": [
+    "main.wad:/MAIN/icon",
+    "local/gfx_english.wad"
+   ],
+   "excludes": [
+    "main.wad:/MAIN/curs"
+   ],
+   "format": "pal8",
+   "scaleSmall": 2,
+   "scaleLarge": 1,
+   "maxDim": 256,
+   "grade": "rich_ui",
+   "alpha": "flag4_key0",
+   "palette": "joint_per_palt",
+   "frameHeader": "scale",
+   "verified": "player's choice: 2x icons (sharper HUD; cursor icon and right-click menu draw at 2x size because the game uses pixel size there)"
+  }
+ ]
+}

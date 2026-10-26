@@ -1,0 +1,35 @@
+SHA-256 checksums of Sacrifice HD 1.1.1
+=======================================
+
+Files of the mod (as in SacrificeHD-1.1.1-Manual.zip; the Setup's "files" folder is the same plus
+the uninstaller):
+93c534f2d17419ea78f15551f7e0aac78b3c503733a840914fa063708a5afe8e  D3DImm.dll
+612a24408a090a3c6f3886557fa18034ee742e94ad0a40ebdf854d2816176c2e  DDraw.dll
+c81f49bb0f18b734313ebad28b88a859defdacdfba7636a0f355d4b87fbb1882  SacrificeHD/README.txt
+d5d41eb4a06fc7d2d9a4137f76c187fd0bdb767f00f1c7f5e6bf15318f7aac4d  SacrificeHD/SacrificeHD.exe
+45cc0eb8e6ed4f067aca1b2e4ac1268dfbd164bbbd06d264c53e8a60642c4dbf  SacrificeHD/dgVoodoo.template.conf
+548a36f9c3f4ab8da56cd3b13badf23968bee207b396dad14d04b830e5f2ab2d  SacrificeHD/esrgan/models/realesr-animevideov3-x2.bin
+b88ff4f00ebf019a7fdac17fdd45a7fd3665d37509efc5baf2e4da2e24420a04  SacrificeHD/esrgan/models/realesr-animevideov3-x2.param
+548a36f9c3f4ab8da56cd3b13badf23968bee207b396dad14d04b830e5f2ab2d  SacrificeHD/esrgan/models/realesr-animevideov3-x4.bin
+850a248e7c14c27e5bd8cf7265113a9441036a7db63963bb8aa5169d788a435e  SacrificeHD/esrgan/models/realesr-animevideov3-x4.param
+07e49f7cbb4ede01ae4dd4c399d3a7e5846e3d2085c3128eff881e55cb7b1a0c  SacrificeHD/esrgan/realesrgan-ncnn-vulkan.exe
+8f72ef2e483465444b2059fc6744d6cb22cd8d8a27f6fa56befd2a42dcd0f78b  SacrificeHD/esrgan/vcomp140.dll
+4a699ec4863d96a91fc265948a0c90033f7e8735d515524dcf3444736406e0c2  SacrificeHD/licenses/Real-ESRGAN-BSD-3-Clause.txt
+5abb941454de437b0e90d78dcb72e3688f74e14bcd4e24393273cb5cd0e9c937  SacrificeHD/licenses/Real-ESRGAN-ncnn-vulkan-MIT.txt
+bdb9fb20427666fe9988fedf944bc7244fc1904ca70171d8238811b5b687dd6e  SacrificeHD/licenses/THIRD-PARTY.txt
+18e5258a336b0bd5690cb4bb8934e272553d338b5ced56b77e479980cdf72026  SacrificeHD/licenses/dgVoodoo2-notice.txt
+bb5c7dc24fd03e77ed8b4360473830e4aeb564b94b3ce970d36dae3288919234  SacrificeHD/licenses/dinputto8-zlib.txt
+d883dbca28769ff23dd4368a8edb7ad9f9f23a8f86adde2875c6e41a828aac62  SacrificeHD/licenses/go-ole-MIT.txt
+2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067  SacrificeHD/licenses/golang-sys-BSD-3-Clause.txt
+e5eb49344b2714fdc0f2536a7ff682c3ee2d38bfac020201052817069e1fffa3  SacrificeHD/licenses/walk-BSD-3-Clause.txt
+477325a745ae8d13ecc36399645c702a16062e8e05952a2286b46e74ff51d0a8  SacrificeHD/licenses/win-BSD-3-Clause.txt
+82b3f6ee8b99c727a37c345984da6cfbed9ea730c12efc99e93983d47a63c4d8  dinput.dll
+
+Installer (Setup zip: "Install Sacrifice HD.exe"; files\SacrificeHD\"Uninstall Sacrifice HD.exe" is the same file):
+07cb7be77e4d144bdd4c684adbe6778c1c07fae909cfc4c0e27f928ce9b67067  Install Sacrifice HD.exe
+
+Official third-party downloads used (the same files may be packed differently in later re-uploads;
+the release tool checks the files inside, listed above):
+5ffde6927f7355ca3fdd5d785b581256a8e6539fa13e395a891ade6ba1040850  dgVoodoo2 2.87.5 zip (9,268,078 bytes)
+931d1d05c5248c1698123926f168d36efce30607485a19436db73dd07effad7b  dinputto8.zip (138,333 bytes)
+abc02804e17982a3be33675e4d471e91ea374e65b70167abc09e31acb412802d  realesrgan-ncnn-vulkan-20220424-windows.zip (45,474,481 bytes)

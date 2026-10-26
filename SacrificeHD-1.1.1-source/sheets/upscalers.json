@@ -1,0 +1,42 @@
+{
+ "sheet": "upscalers",
+ "doc": "Upscaling back-ends, tried in order. Real-ESRGAN (ncnn/Vulkan, bundled, MIT/BSD-3) runs on the player's GPU; the Lanczos path is the built-in fallback when no Vulkan GPU is present.",
+ "columns": [
+  "id",
+  "scale",
+  "exe",
+  "model",
+  "args",
+  "fallback",
+  "verified"
+ ],
+ "rows": [
+  {
+   "id": "esrgan_x2",
+   "scale": 2,
+   "exe": "esrgan/realesrgan-ncnn-vulkan.exe",
+   "model": "realesr-animevideov3",
+   "args": "-s 2 -f png",
+   "fallback": "lanczos",
+   "verified": "yes"
+  },
+  {
+   "id": "esrgan_x4",
+   "scale": 4,
+   "exe": "esrgan/realesrgan-ncnn-vulkan.exe",
+   "model": "realesr-animevideov3",
+   "args": "-s 4 -f png",
+   "fallback": "lanczos",
+   "verified": "yes"
+  },
+  {
+   "id": "lanczos",
+   "scale": 0,
+   "exe": "",
+   "model": "lanczos3",
+   "args": "",
+   "fallback": "",
+   "verified": "yes: Linux CPU run, 4 minutes"
+  }
+ ]
+}

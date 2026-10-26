@@ -1,0 +1,54 @@
+{
+ "sheet": "grades",
+ "doc": "Colour/detail grades applied after upscaling (the agreed 'sharper + richer' look). One row = one Grade value.",
+ "columns": [
+  "id",
+  "saturation",
+  "contrast",
+  "sharpenRadius",
+  "sharpenAmount",
+  "verified"
+ ],
+ "rows": [
+  {
+   "id": "rich",
+   "saturation": 1.15,
+   "contrast": 1.08,
+   "sharpenRadius": 1.2,
+   "sharpenAmount": 0.45,
+   "verified": "yes"
+  },
+  {
+   "id": "rich_fx",
+   "saturation": 1.3,
+   "contrast": 1.1,
+   "sharpenRadius": 1.0,
+   "sharpenAmount": 0.35,
+   "verified": "player choice: more vivid spells - awaiting playtest"
+  },
+  {
+   "id": "rich_ui",
+   "saturation": 1.06,
+   "contrast": 1.04,
+   "sharpenRadius": 0.8,
+   "sharpenAmount": 0.35,
+   "verified": "partly (menus)"
+  },
+  {
+   "id": "rich_palette",
+   "saturation": 1.15,
+   "contrast": 1.08,
+   "sharpenRadius": 0,
+   "sharpenAmount": 0,
+   "verified": "yes"
+  },
+  {
+   "id": "rich_fx_soul",
+   "saturation": 1.12,
+   "contrast": 1.05,
+   "sharpenRadius": 1.0,
+   "sharpenAmount": 0.3,
+   "verified": "yes"
+  }
+ ]
+}

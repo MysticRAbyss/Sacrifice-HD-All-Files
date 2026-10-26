@@ -1,0 +1,5 @@
+{"id":"SacrificeHD","title":"Sacrifice HD","version":"1.1.1","modFolder":"SacrificeHD",
+ "launcher":"SacrificeHD/SacrificeHD.exe","uninstaller":"SacrificeHD/Uninstall Sacrifice HD.exe","needsSacrificeExe":true,
+ "rootFiles":["DDraw.dll","D3DImm.dll","dinput.dll"],"backupDir":"SacrificeHD/original_dlls",
+ "restore":["-restore","-game","{game}"],"alsoRemove":["dgVoodoo.conf"],"hdCache":true,"adminLink":true,
+ "userFiles":[],"notes":["The first start builds the HD textures from your copy of the game (a few minutes, once)."],"sizeKB":12468}

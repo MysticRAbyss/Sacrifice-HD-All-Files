@@ -1,0 +1,115 @@
+How to build Sacrifice HD 1.1.1
+===============================
+
+This builds both downloads, SacrificeHD-1.1.1-Setup.zip and SacrificeHD-1.1.1-Manual.zip, from this
+source folder. With the same tools, SacrificeHD.exe, the installer and every other file come out
+byte for byte the same as the published 1.1.1 (CHECKSUMS.txt lists them), so anyone can check that
+the downloads contain exactly this code.
+
+The steps are written for Windows 10/11. They work the same on Linux or macOS (use "python3" and
+"/" in paths); the programs are always built for Windows.
+
+
+1. Install the tools (once)
+---------------------------
+a) Go 1.24.7, 64-bit: https://go.dev/dl/  ->  go1.24.7.windows-amd64.msi
+   Use exactly 1.24.7 if you want identical files; any newer Go also builds working programs,
+   only their checksums will differ.
+   Check in a new Command Prompt:   go version      ->  go version go1.24.7 windows/amd64
+b) Python 3 (any recent version): https://www.python.org/downloads/
+   Tick "Add python.exe to PATH" in its installer. Check:   python --version
+c) An internet connection the first time: Go downloads the installer's libraries (walk, win,
+   go-ole, golang.org/x/sys, rsrc) and checks them against the go.sum files.
+No C compiler, Visual Studio or other build tool is needed.
+
+
+2. Download the three third-party packages
+------------------------------------------
+Put the three zips, as downloaded (do not unzip them), into one folder, for example
+C:\SacrificeHD-build\downloads.
+
+a) dgVoodoo2 2.87.5 by Dege - graphics wrapper (DDraw.dll, D3DImm.dll, dgVoodoo.conf)
+   http://dege.fw.hu/dgVoodoo2/  ->  dgVoodoo2 v2.87.5. If the site only offers a newer version
+   by now, that one builds a working mod too (the tool marks its files as DIFFERENT).
+b) dinputto8 by Elisha Riedlinger - DirectInput fix (dinput.dll)
+   https://github.com/elishacloud/dinputto8/releases  ->  dinputto8.zip of the release whose
+   dinput.dll is dated 26 June 2024 (build 122)
+c) Real-ESRGAN v0.2.5.0 by Xintao Wang et al. - texture upscaler
+   https://github.com/xinntao/Real-ESRGAN/releases/tag/v0.2.5.0
+   ->  realesrgan-ncnn-vulkan-20220424-windows.zip
+
+The release tool finds the files it needs inside the zips by name and checks each one against
+the published checksums (CHECKSUMS.txt), so it does not matter what the zips are called. If a
+site now serves a different version, the tool says "DIFFERENT" for those files: the build still
+works, but with that version instead of the one in the published 1.1.1.
+
+
+3. Build
+--------
+Open a Command Prompt in this source folder's "release" folder and run:
+
+    cd C:\SacrificeHD-build\SacrificeHD-1.1.1-source\release
+    go run . -thirdparty C:\SacrificeHD-build\downloads -out C:\SacrificeHD-build\out
+
+It takes a minute (longer the first time, while Go downloads the libraries) and does this:
+  1. takes the third-party files out of the zips and checks them;
+  2. builds SacrificeHD.exe from launcher\ for 64-bit Windows (GOOS=windows, GOARCH=amd64,
+     CGO_ENABLED=0) with:   go build -trimpath -ldflags "-s -w" -o SacrificeHD.exe .
+  3. adds README-mod.txt (as SacrificeHD\README.txt) and the licenses folder;
+  4. builds the installer from installer\ : first the small verinfo tool, which writes the
+     installer's icon, manifest and version information (product name, version, description)
+     into rsrc_windows_amd64.syso, then
+         go build -trimpath -ldflags "-H windowsgui" -o "Install Sacrifice HD.exe" .
+     The same program, named "Uninstall Sacrifice HD.exe", is the uninstaller;
+  5. makes the two zips in the output folder;
+  6. prints the checksums of SacrificeHD.exe and the installer.
+
+Result (in the -out folder):
+  SacrificeHD-1.1.1-Setup.zip    Install Sacrifice HD.exe, README.txt and the "files" folder
+  SacrificeHD-1.1.1-Manual.zip   the mod's files only, to copy into the Sacrifice folder
+  work\                          the same, unzipped (can be deleted)
+
+
+4. Check the result
+-------------------
+- Compare the two checksums the tool prints with CHECKSUMS.txt. With Go 1.24.7 and the same
+  third-party files they are identical:
+      d5d41eb4a06fc7d2d9a4137f76c187fd0bdb767f00f1c7f5e6bf15318f7aac4d  SacrificeHD.exe
+      07cb7be77e4d144bdd4c684adbe6778c1c07fae909cfc4c0e27f928ce9b67067  Install Sacrifice HD.exe
+- Any single file can be checked on Windows with:   certutil -hashfile <file> SHA256
+- The zips themselves differ from the published ones only in the time stamps inside them; the
+  files in them are the same.
+
+
+Building the parts by hand
+--------------------------
+Only SacrificeHD.exe (from the launcher folder):
+    set GOOS=windows
+    set GOARCH=amd64
+    set CGO_ENABLED=0
+    go build -trimpath -ldflags "-s -w" -o SacrificeHD.exe .
+
+Only the installer (from the installer folder; edition.json holds its Sacrifice HD settings):
+    cd verinfo
+    go build -o ..\verinfo.exe .
+    cd ..
+    python mkver.py "Sacrifice HD" 1.1.1 "Sacrifice HD setup" "Install Sacrifice HD.exe" vi.json hydro.ico setup.manifest
+    verinfo.exe vi.json rsrc_windows_amd64.syso
+    set GOOS=windows
+    set GOARCH=amd64
+    go build -trimpath -ldflags "-H windowsgui" -o "Install Sacrifice HD.exe" .
+The installer needs the "files" folder next to it (see step 3 for its layout).
+
+Tests of the installer's install / update / uninstall logic (they run on any system):
+    cd installer
+    go test .
+
+
+Changing the texture rules
+--------------------------
+The rules for which textures are upscaled, by how much and with which colour grade are in
+sheets\*.json. After changing them, regenerate launcher\gen_sheets.go and rebuild:
+    python tools\sheets.py gen
+"python tools\sheets.py preflight" checks the sheets against each other and against
+dgVoodoo.template.conf; its coverage check reads your own game files, so first point it at your
+Sacrifice data folder:   set SACRIFICE_DATA=C:\GOG Games\Sacrifice\data
